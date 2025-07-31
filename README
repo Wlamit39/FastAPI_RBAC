@@ -1,0 +1,21 @@
+# FastAPI RBAC Assignment
+
+This is a REST API with JWT authentication and Role-Based Access Control using FastAPI, PostgreSQL, and SQLModel.
+
+## Features
+- User Registration & Login
+- JWT-based Authentication
+- Role-based Access (`admin`, `user`)
+- CRUD for Projects (admin only write access)
+- PostgreSQL database
+- Dockerized for easy setup
+
+---
+
+## Setup
+
+### 1. Clone the repo
+```bash
+git clone <repo_url>
+cd assignment
+
