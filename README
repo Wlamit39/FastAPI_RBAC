@@ -16,6 +16,16 @@ This is a REST API with JWT authentication and Role-Based Access Control using F
 
 ### 1. Clone the repo
 ```bash
-git clone <repo_url>
+git clone https://github.com/Wlamit39/FastAPI_RBAC
 cd assignment
+
+A) Using Docker (recommended)
+    docker-compose up --build
+    Access API: http://localhost:8000/docs
+B)Manual setup
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    createdb fastapi_rbac
+    uvicorn app.main:app --reload
 
