@@ -18,10 +18,14 @@ def test_register_existing_user(client):
     assert response.status_code == 400
 
 def test_login_user(client):
-    response = client.post("/login", json={
-        "username": "testuser",
-        "password": "testpass"
-    })
+    response = client.post(
+        "/login",
+        data={
+            "username": "testuser",
+            "password": "testpass"
+        },
+        headers={"Content-Type": "application/x-www-form-urlencoded"}
+    )
     assert response.status_code == 200
     token = response.json()["access_token"]
     assert token is not None
