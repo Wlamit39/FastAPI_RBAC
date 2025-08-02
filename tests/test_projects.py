@@ -1,11 +1,19 @@
 def test_projects_access(client):
     # Create admin
     client.post("/register", json={"username": "admin", "password": "adminpass", "role": "admin"})
-    token_admin = client.post("/login", json={"username": "admin", "password": "adminpass"}).json()["access_token"]
+    token_admin = client.post(
+        "/login",
+        data={"username": "admin", "password": "adminpass"},
+        headers={"Content-Type": "application/x-www-form-urlencoded"}
+    ).json()["access_token"]
 
     # Create normal user
     client.post("/register", json={"username": "bob", "password": "bobpass", "role": "user"})
-    token_user = client.post("/login", json={"username": "bob", "password": "bobpass"}).json()["access_token"]
+    token_user = client.post(
+        "/login",
+        data={"username": "bob", "password": "bobpass"},
+        headers={"Content-Type": "application/x-www-form-urlencoded"}
+    ).json()["access_token"]
 
     # User should NOT create project
     response = client.post("/projects", json={"name": "P1", "description": "Test"}, headers={"Authorization": f"Bearer {token_user}"})
